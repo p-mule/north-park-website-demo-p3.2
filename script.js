@@ -7,7 +7,7 @@
   l.addEventListener('click',function(){l.classList.remove('open');b.setAttribute('aria-expanded','false')});
 })();
 (function(){
-  var V=['home','about','admissions','apply'],T={home:'North Park School',about:'About us – North Park School',admissions:'Admissions – North Park School',apply:'How to apply – North Park School'},cur='';
+  var V=['home','about','admissions','gallery','apply'],T={home:'North Park School',gallery:'Class of 2026 – North Park School',about:'About us – North Park School',admissions:'Admissions – North Park School',apply:'How to apply – North Park School'},cur='';
   function go(tok){
     var t=(typeof tok==='string'?tok:location.hash.slice(1))||'home',el=null;
     if(t==='faq'||t==='stages'){el=document.getElementById(t);t='home'}
@@ -34,4 +34,13 @@
     a.href='mailto:northparkschool@gmail.com?subject='+encodeURIComponent('Application for North Park School')+'&body='+encodeURIComponent(body);
   }
   f.addEventListener('input',upd);upd();
+})();
+(function(){
+  var lb=document.getElementById('lb'),im=lb.querySelector('img');
+  document.addEventListener('click',function(e){
+    var z=e.target.closest&&e.target.closest('.zoom');
+    if(z){var p=z.querySelector('img');im.src=p.src;im.alt=p.alt;lb.hidden=false;return}
+    if(e.target.closest&&e.target.closest('#lb'))lb.hidden=true;
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
 })();
